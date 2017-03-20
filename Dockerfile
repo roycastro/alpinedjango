@@ -1,9 +1,7 @@
 FROM python:3.5-alpine
 
-MAINTAINER "Roy Castro"
-RUN adduser -S sshuser
-RUN echo "root:root" | chpasswd
-RUN echo "sshuser:root" | chpasswd
+MAINTAINER Roy Castro
+
 RUN apk add --update \
     openssh \
     nginx \
