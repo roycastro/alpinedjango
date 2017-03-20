@@ -1,10 +1,6 @@
 FROM python:3.5-alpine
 
 MAINTAINER "Roy Castro"
-LABEL project="docker-nginx-uwsgi-django"
-LABEL version = "0.0.1"
-LABEL author="Roy Castro"
-LABEL author_email="rcastro9007@gmail.com"
 RUN adduser -S sshuser
 RUN echo "root:root" | chpasswd
 RUN echo "sshuser:root" | chpasswd
