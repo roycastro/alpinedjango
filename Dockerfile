@@ -1,12 +1,15 @@
 FROM python:3.5-alpine
 
-MAINTAINER "Zach Kazanski"
+MAINTAINER "Roy Castro"
 LABEL project="docker-nginx-uwsgi-django"
-LABEL version = "1.0.0"
-LABEL author="Zach Kazanski"
-LABEL author_email="kazanski.zachary@gmail.com"
-
+LABEL version = "0.0.1"
+LABEL author="Roy Castro"
+LABEL author_email="rcastro9007@gmail.com"
+RUN adduser -S sshuser
+RUN echo "root:root" | chpasswd
+RUN echo "sshuser:root" | chpasswd
 RUN apk add --update \
+    openssh \
     nginx \
     supervisor \ 
     python-dev \
@@ -32,6 +35,6 @@ RUN ln -s /app/nginx/nginx-app.conf /etc/nginx/sites-enabled/
 RUN rm /etc/supervisord.conf
 RUN ln -s /app/supervisord/supervisord.conf /etc/
 
-EXPOSE 80
+EXPOSE [80,5492,22]
 
 CMD ["supervisord", "-n"]
