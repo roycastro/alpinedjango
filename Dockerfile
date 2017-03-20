@@ -1,6 +1,6 @@
 FROM python:3.5-alpine
 
-MAINTAINER Roy Castro
+MAINTAINER "Roy Castro"
 
 RUN apk add --update \
     openssh \
@@ -11,9 +11,9 @@ RUN apk add --update \
     linux-headers \
     pcre-dev \
     py-pip \ 
-    vim \
-  && rm -rf /var/cache/apk/* && \
-  chown -R nginx:www-data /var/lib/nginx
+    vim &&\
+    rm -rf /var/cache/apk/* && \
+    chown -R nginx:www-data /var/lib/nginx
 
 RUN pip install https://github.com/unbit/uwsgi/archive/uwsgi-2.0.zip#egg=uwsgi
 
